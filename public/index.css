@@ -21,6 +21,10 @@
   margin-right: 10px;
 }
 
+#current-date {
+  cursor: pointer;
+}
+
 .hours {
   padding-left: 200px;
 }

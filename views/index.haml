@@ -21,14 +21,12 @@
       %a.prev{href: previous_date_url}
         %i.glyphicon.glyphicon-chevron-left
 
-      %input#new-date{type: 'hidden', name: 'date'}
-      #current-date
-        = current_date_text
-
-
       %a.next{href: next_date_url}
         %i.glyphicon.glyphicon-chevron-right
 
+      %input#new-date{type: 'hidden', name: 'date'}
+      #current-date
+        = current_date_text
 
     .container  
       .row
