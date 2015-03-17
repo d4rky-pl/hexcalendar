@@ -138,6 +138,22 @@ li.type-0-6.shape-1 {
   top: 470px;
 }
 
+.table-hover > tbody > tr > td.success.hover,
+.table-hover > tbody > tr > th.success.hover,
+.table-hover > tbody > tr.success.hover > td,
+.table-hover > tbody > tr.hover > .success,
+.table-hover > tbody > tr.success.hover > th {
+  background-color: #d0e9c6;
+}
+
+.table-hover > tbody > tr > td.danger.hover,
+.table-hover > tbody > tr > th.danger.hover,
+.table-hover > tbody > tr.danger.hover > td,
+.table-hover > tbody > tr.hover > .danger,
+.table-hover > tbody > tr.danger.hover > th {
+  background-color: #ebcccc;
+}
+
 #footer {
   text-align: center;
   font-size: 12px;

@@ -9,10 +9,12 @@
     %title Hex Calendar
     :javascript
       $(function() {
-        get_id = function(elem) { return $(elem).attr('class').match(/table-link-([0-9]*)/)[1]; }
-        $('td').on('mouseover', function() { $('#table-' + get_id(this)).addClass('selected') })
-               .on('mouseout', function() { $('#table-' + get_id(this)).removeClass('selected') })
-
+        td_id = function(elem) { return $(elem).attr('class').match(/table-link-([0-9]*)/)[1]; }
+        li_id = function(elem) { return $(elem).attr('id').match(/table-([0-9]*)/)[1]; }
+        $('td').on('mouseover', function() { $('#table-' + td_id(this)).addClass('selected') })
+               .on('mouseout', function() { $('#table-' + td_id(this)).removeClass('selected') })
+        $('li').on('mouseover', function() { $('td.table-link-' + li_id(this)).addClass('hover') })
+               .on('mouseout', function() { $('td.table-link-' + li_id(this)).removeClass('hover') })
         datepickr('#current-date', { dateFormat: 'Y-m-d', altInput: document.getElementById('new-date')})
         $('#new-date').on('change', function() { window.location.href = '/' + $(this).val(); })
       });
