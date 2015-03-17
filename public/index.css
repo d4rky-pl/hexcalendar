@@ -137,3 +137,13 @@ li.type-0-6.shape-1 {
   left: 107px;
   top: 470px;
 }
+
+#footer {
+  text-align: center;
+  font-size: 12px;
+}
+
+#footer a {
+  color: #888;
+  text-decoration: none;
+}
