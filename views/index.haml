@@ -1,0 +1,65 @@
+!!!
+%html
+  %head
+    %link{href: "//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css", rel: "stylesheet"}/
+    %link{href: "index.css", rel: "stylesheet"}/
+    %link{href: "datepickr.min.css", rel: "stylesheet"}/
+    %script{src: '//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js', type: 'text/javascript'}
+    %script{src: 'datepickr.min.js', type: 'text/javascript'}
+    %title Hex Calendar
+    :javascript
+      $(function() {
+        get_id = function(elem) { return $(elem).attr('class').match(/table-link-([0-9]*)/)[1]; }
+        $('td').on('mouseover', function() { $('#table-' + get_id(this)).addClass('selected') })
+               .on('mouseout', function() { $('#table-' + get_id(this)).removeClass('selected') })
+
+        datepickr('#current-date', { dateFormat: 'Y-m-d', altInput: document.getElementById('new-date')})
+        $('#new-date').on('change', function() { window.location.href = '/' + $(this).val(); })
+      });
+  %body
+    .navigation
+      %a.prev{href: previous_date_url}
+        %i.glyphicon.glyphicon-chevron-left
+
+      %input#new-date{type: 'hidden', name: 'date'}
+      #current-date
+        = current_date_text
+
+
+      %a.next{href: next_date_url}
+        %i.glyphicon.glyphicon-chevron-right
+
+
+    .container  
+      .row
+        .col-md-4.hidden-xs.hidden-sm
+          %ul.tables
+            %li.type-0-6.shape-1#table-0
+            %li.type-1-6.shape-1#table-1
+            %li.type-2-6.shape-1#table-2
+            %li.type-3-11.shape-2#table-3
+            %li.type-4-11.shape-2#table-4
+            %li.type-5-2.shape-3#table-5
+            %li.type-6-11.shape-2#table-6
+            %li.type-7-11.shape-2#table-7
+            %li.type-8-4.shape-2#table-8
+            %li.type-9-6.shape-1#table-9
+            %li.type-10-11.shape-2#table-10
+            %li.type-11-11.shape-2#table-11
+            %li.type-12-11.shape-2#table-12
+            %li.type-13-11.shape-2#table-13
+        .col-md-8.col-xs-12
+          %table.table.table-hover
+            %thead
+              %tr
+                - @repository.tables.each do |table|
+                  %th
+                    Stolik ##{table.id}
+            %tbody
+              - 24.times do |i|
+                %tr
+                  - @repository.tables.each do |table|
+                    %td{class: table_class(table.id, i)}
+                      = id_to_time(i).strftime("%H:%M")
+    #footer
+      %a{:href => "http://nerdblog.pl"} (lol I made this)
